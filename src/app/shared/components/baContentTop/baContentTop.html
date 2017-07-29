@@ -1,0 +1,12 @@
+<div class="content-top clearfix">
+  <h1 class="al-title" translate>{{ activePages[0] }}</h1>
+
+  <ul class="breadcrumb al-breadcrumb">
+        <li class="breadcrumb-item" >
+      <a routerLink="/paginas" translate>{{'general.menu.paginas'}}</a>
+    </li>
+    <li *ngFor="let pagina of activePages" class="breadcrumb-item active" >
+      <a routerLink="{{pagina.url}}" translate>{{'general.menu.' + pagina.nome}}</a>
+    </li> 
+  </ul>
+</div>
