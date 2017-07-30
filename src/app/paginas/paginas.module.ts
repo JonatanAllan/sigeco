@@ -4,7 +4,7 @@ import { CommonModule }  from '@angular/common';
 import { NgaModule } from '../shared/nga.module';
 import { AppTranslationModule } from '../app.translation.module';
 
-import { PaginasRoutingModule } from './paginas-routing.module';
+import { routing } from './paginas.routing';
 import { PaginasComponent } from './paginas.component';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { PaginasComponent } from './paginas.component';
     CommonModule, 
     AppTranslationModule, 
     NgaModule,
-    PaginasRoutingModule
+    routing
   ],
   declarations: [
     PaginasComponent

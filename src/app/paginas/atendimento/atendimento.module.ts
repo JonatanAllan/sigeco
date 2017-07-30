@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AtendimentoRoutingModule } from './atendimento-routing.module';
+import { routing } from './atendimento.routing';
+
 import { AtendimentoComponent } from './atendimento.component';
 import { AbacosComponent } from './abacos/abacos.component';
 import { PedidosBarradosComponent } from './pedidos-barrados/pedidos-barrados.component';
@@ -9,7 +10,7 @@ import { PedidosBarradosComponent } from './pedidos-barrados/pedidos-barrados.co
 @NgModule({
   imports: [
     CommonModule,
-    AtendimentoRoutingModule
+    routing
   ],
   declarations: [AtendimentoComponent, AbacosComponent, PedidosBarradosComponent]
 })

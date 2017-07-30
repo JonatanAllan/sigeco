@@ -7,11 +7,10 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AppComponent } from './app.component';
 
-import { PagesModule } from './pages/pages.module';
 import { PaginasModule } from './paginas/paginas.module';
 
 import { NgaModule } from './shared/nga.module';
-import { AppRoutingModule } from './app-routing.module';
+import { routing } from './app.routing';
 
 import { GlobalState } from './global.state';
 import { AppState } from './app.service';
@@ -31,11 +30,10 @@ const APP_PROVIDERS = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
+    routing,
     ReactiveFormsModule,
     NgaModule.forRoot(),
     NgbModule.forRoot(),
-    PagesModule,
     PaginasModule
   ],
   providers: [
