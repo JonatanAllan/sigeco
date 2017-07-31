@@ -1,3 +1,4 @@
+import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule }  from '@angular/router';
 
 import { PedidosBarradosComponent } from './pedidos-barrados/pedidos-barrados.component';
@@ -16,4 +17,4 @@ const routes: Routes = [
   }
 ];
 
-export const routing = RouterModule.forChild(routes);
+export const routingAtendimento: ModuleWithProviders = RouterModule.forChild(routes);

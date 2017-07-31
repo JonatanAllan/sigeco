@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { routingFinanceiro } from './financeiro.routing';
+
 import { FinanceiroComponent } from './financeiro.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    routingFinanceiro
   ],
   declarations: [FinanceiroComponent]
 })
