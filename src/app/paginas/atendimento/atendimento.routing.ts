@@ -11,8 +11,8 @@ const routes: Routes = [
     path: '',
     component: AtendimentoComponent,
     children: [
-      { path: 'abacos', component: AbacosComponent },
-      { path: 'pedidos_barrados', component: PedidosBarradosComponent },
+      { path: 'abacos', loadChildren: './abacos/abacos.module#AbacosModule'},
+      { path: 'pedidos-barrados', component: PedidosBarradosComponent },
     ]
   }
 ];

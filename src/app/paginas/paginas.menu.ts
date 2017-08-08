@@ -32,13 +32,33 @@ export const PAGINAS_MENU = [
               menu: {
                 title: 'general.menu.abacos',
               }
-            }
+            },
+            children: [
+              {
+                path: 'consulta-pedidos',
+                data: {
+                  menu: {
+                    title: 'general.menu.consulta-pedidos',
+                    icon: 'ion-edit',
+                  }
+                }
+              },
+              {
+                path: 'consulta-produtos',
+                data: {
+                  menu: {
+                    title: 'general.menu.consulta-produtos',
+                    icon: 'ion-edit',
+                  }
+                }
+              }
+            ]
           },
-                    {
-            path: 'pedidos_barrados',
+          {
+            path: 'pedidos-barrados',
             data: {
               menu: {
-                title: 'general.menu.pedidos_barrados',
+                title: 'general.menu.pedidos-barrados',
               }
             }
           }
@@ -216,14 +236,14 @@ export const PAGINAS_MENU = [
               }
             }
           },
-           {
-             path: 'hottables',
-             data: {
-               menu: {
-                 title: 'Hot Tables',
-               }
-             }
-           }
+          {
+            path: 'hottables',
+            data: {
+              menu: {
+                title: 'Hot Tables',
+              }
+            }
+          }
         ]
       }
     ]

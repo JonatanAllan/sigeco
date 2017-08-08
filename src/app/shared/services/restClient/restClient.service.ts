@@ -1,57 +1,62 @@
-import { ApiConfigModel } from './../../models/ApiConfig.model';
-import { Http, Response, RequestOptions, Headers, URLSearchParams } from '@angular/http';
-import { Router } from '@angular/router';
-import { Injectable, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { ApiConfigModel } from "./../../models/ApiConfig.model";
+import { Http, Response, RequestOptions, Headers, URLSearchParams } from "@angular/http";
+import { Router } from "@angular/router";
+import { Injectable, EventEmitter } from "@angular/core";
+import { Observable } from "rxjs/Rx";
 
-import * as Constants from '../../shared.constants';
-
-//https://stackoverflow.com/questions/44129817/typescript-generic-service
+import * as Constants from "../../shared.constants";
 
 @Injectable()
-export class RestClientService<T> {
+export class RestClientService {
+  private _headers = new Headers();
 
-    private _urlBase: string;
+  constructor(private _http: Http, private _rota: Router) {
+    this._headers.set("Content-Type", "application/json");
+  }
 
-    private _headers = new Headers();
+  montarRequisicao(config: ApiConfigModel, headers: Map<string, string>) {
+    if (headers != null)
+      this.gerarHeaders(headers);
 
-    constructor(private _http: Http, private _rota: Router) {
-        this._headers.append('Content-Type', 'application/json');
+    if (config.Debug) {
+      return config.UrlDebug + config.Segmento;
     }
+    return Constants.API_BASE_URL + config.Prefixo + config.Segmento;
+  }
 
-    montarUrl(config: ApiConfigModel) {
-        if (config.Debug) {
-            this._urlBase = config.UrlDebug;
-            return;
-        }
-        this._urlBase = Constants.API_BASE_URL + config.Prefixo;
-    }
+  gerarHeaders(headers: Map<string, string>) {
+    headers.forEach((value: string, key: string) => {
+      this._headers.set(key, value);
+    });
+  }
 
-    gerarHeaders(headers: Map<string, string>) {
-        headers.forEach((value: string, key: string) => {
-            this._headers.append(key, value);
-        });
-    }
+  get(config: ApiConfigModel, params: URLSearchParams = null, headers: Map<string, string> = null){
+    let url = this.montarRequisicao(config, headers);
+    return this._http.get(url, { headers: this._headers, search: params })
+      .map((res: Response) => res.json());
+  }
 
-    get(config: ApiConfigModel, params: URLSearchParams = null, headers: Map<string, string> = null): Observable<T[]> {
-        if (headers != null) {
-            this.gerarHeaders(headers);
-        }
-        this.montarUrl(config);
+  post(config: ApiConfigModel, body: any, params: URLSearchParams = null, headers: Map<string, string> = null) {
+    let url = this.montarRequisicao(config, headers);
+    return this._http.post(url, JSON.stringify(body), { headers: this._headers, search: params })
+      .map((res: Response) => res.json());
+  }
 
-        return this._http.get(this._urlBase + config.Segmento, {
-            headers: this._headers,
-            search: params
-        }).map((res: Response) => res.json());
-    }
+  put(config: ApiConfigModel, body: any, params: URLSearchParams = null, headers: Map<string, string> = null) {
+    let url = this.montarRequisicao(config, headers);
+    return this._http.put(url, JSON.stringify(body), { headers: this._headers, search: params })
+      .map((res: Response) => res.json());
+  }
 
-    emitters: {
-        [nomeEvento: string]: EventEmitter<any>
-    } = {}
+  patch(config: ApiConfigModel, body: any, params: URLSearchParams = null, headers: Map<string, string> = null) {
+    let url = this.montarRequisicao(config, headers);
+    return this._http.patch(url, JSON.stringify(body), { headers: this._headers, search: params })
+      .map((res: Response) => res.json());
+  }
 
-    listaDeEventos(nomeEvento: string): EventEmitter<any> {
-        if (!this.emitters[nomeEvento])
-            this.emitters[nomeEvento] = new EventEmitter<any>();
-        return this.emitters[nomeEvento];
-    }
+  delete(config: ApiConfigModel, params: URLSearchParams = null, headers: Map<string, string> = null) {
+    let url = this.montarRequisicao(config, headers);
+    return this._http.delete(url, { headers: this._headers, search: params })
+      .map((res: Response) => res.json());
+  }
 }

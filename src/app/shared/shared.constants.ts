@@ -1,6 +1,5 @@
-export const API_BASE_URL='https://api.mercadolibre.com';
-//export const API_BASE_URL='http://api.dakotaparts.com.br';
-export const VERSION: string="1.0.0";
+export const API_BASE_URL='http://api.dakotaparts.com.br';
+export const VERSION: string = "1.0.0";
 
 export const IMAGES_ROOT = 'assets/img/';
 

@@ -4,7 +4,7 @@ import { RestClientService } from './../../../shared/services/restClient/restCli
 import { ApiConfigModel } from './../../../shared/models/ApiConfig.model';
 
 @Component({
-  selector: 'app-abacos',
+  selector: 'paginas-atendimento-abacos',
   templateUrl: './abacos.component.html',
   styleUrls: ['./abacos.component.scss']
 })
@@ -12,25 +12,22 @@ export class AbacosComponent implements OnInit {
 
   private test: any;
 
-  constructor(private _restClient: RestClientService<any>) {
+  private config: ApiConfigModel = {
+      Debug: false,
+      Prefixo: "",
+      UrlDebug: null,
+      Segmento: ""
+    };
 
+  constructor(private _restClient: RestClientService) {
   }
 
   ngOnInit() {
-    let config = new ApiConfigModel();
 
-    config.Debug = false;
-    config.Prefixo = "/sites/MLB/categories";
-    config.UrlDebug = null;
-    config.Segmento = "";
-
-    let params = new URLSearchParams();
-    params.set("category", "MLB5672");
-
-     this._restClient.get(config).subscribe(data => this.test = data);
+    //this._restClient.get(this.config,).subscribe(retorno => this.test = retorno);
   }
 
- get listarTest() {
+  get listarTest() {
     return this.test;
   }
 
