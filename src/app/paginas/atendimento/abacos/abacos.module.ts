@@ -21,4 +21,6 @@ import { ConsultaProdutosComponent } from './consulta-produtos/consulta-produtos
   ],
   declarations: [AbacosComponent, ConsultaPedidosComponent, ConsultaProdutosComponent]
 })
-export class AbacosModule { }
+export class AbacosModule { 
+
+}

@@ -5,8 +5,7 @@ import { ApiConfigModel } from './../../../shared/models/ApiConfig.model';
 
 @Component({
   selector: 'paginas-atendimento-abacos',
-  templateUrl: './abacos.component.html',
-  styleUrls: ['./abacos.component.scss']
+  template: `<router-outlet></router-outlet>`
 })
 export class AbacosComponent implements OnInit {
 

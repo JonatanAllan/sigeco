@@ -18,11 +18,27 @@
           </div>
           <div class="form-group">
             <div class="checkbox">
-              <ba-checkbox [(ngModel)]="ignorarCancelados" [label]="'Ignorar Cancelados'" [ngModelOptions]="{standalone: false}"></ba-checkbox>
+              <ba-checkbox [(ngModel)]="ignorarCancelados" [label]="'Ignorar Cancelados'" [ngModelOptions]="{standalone: true}"></ba-checkbox>
             </div>
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-primary">Buscar</button>
+          </div>
+        </form>
+      </ba-card>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <ba-card cardTitle="Filtros" baCardClass="with-scroll">
+        <form class="row form-inline">
+          <div class="form-group col-sm-3">
+            <input type="text" class="form-control form-control-rounded" id="input04" placeholder="Número do Pedido">
+          </div>
+
+          <div class="form-group col-sm-3">
+              <input type="text" class="form-control form-control-rounded" id="tokenfield" value="red,green,blue" />
           </div>
         </form>
       </ba-card>
